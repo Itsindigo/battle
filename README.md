@@ -1,5 +1,10 @@
-<<<<<<< HEAD
-# Battle
-=======
-# battle
->>>>>>> a93520a58845b752ced1044f2d47d3a22b98496a
+Battle Project Readme.
+
+Usage.
+
+player2 = Player.new
+player1 = Player.new
+
+player1.attack(player2)
+
+Authors.
