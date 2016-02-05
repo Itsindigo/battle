@@ -18,6 +18,7 @@ class MyApp < Sinatra::Base
 
   get '/play' do
     @game = $game
+    @switch_turn = @game.switch_turn
     @player_1_name = @game.player_1.name
     @player_2_name = @game.player_2.name
     @player_1_hp = @game.player_1.hp
@@ -27,13 +28,17 @@ class MyApp < Sinatra::Base
 
   get '/attack' do
     @game = $game
-    @p1_att_p2 =  @game.attack(@game.player_2)
+    @switch_turn = @game.switch_turn
+    @p1_att_p2 =  @game.attack(@game.player_1)
+    @p2_att_p1 =  @game.attack(@game.player_2)
     @player_1_name = @game.player_1.name
     @player_2_name = @game.player_2.name
-    # @player_2_hp = $game.attack($player_2)
-    # @player_1.attack(@player_2)
     erb :attack
   end
+
+  # get '/wait-your-turn' do
+  #   erb :wait-your-turn
+  # end
 
 
   run! if app_file == $0

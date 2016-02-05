@@ -19,10 +19,31 @@ describe Game do
     end
   end
 
+  describe "#turn" do
+    it "should test if game begins at player ones turn" do
+      expect(game.turn).to eq player_1
+    end
+  end
+
+
   describe "#attack" do
+    it "should raise error if not players turn" do
+      allow(player_2).to receive(:receives_damage)
+      expect{game.attack(player_2)}.to raise_error "It is not your turn"
+    end
+
     it "causes player to receive receives_damage method" do
       expect(player_1).to receive(:receives_damage)
       game.attack(player_1)
+    end
+  end
+
+  describe "#switch_turn" do
+    it "Should switch turn following an attack" do
+      allow(player_1).to receive(:receives_damage)
+      game.attack(player_1)
+      expect{game.switch_turn}.to change{game.turn}
+      expect(game.turn).to eq player_1
     end
   end
 

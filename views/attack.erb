@@ -1,9 +1,8 @@
 <h1>Attack!</h1>
 <%= @player_1_name %> attacked <%= @player_2_name %>
 <p>
-<%= @player_2_name %>: <%= @p1_att_p2 %>HP
+<%= @player_2_name %>: <%= @p1_att_p2 %>HP <%= @switch_turn %>
 </p>
-
 
 <form action='/play' method='get'>
   <input type="submit" value="Return to homepage">
